@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <string>
 using namespace std;
 /*
 int board[25] = {
@@ -43,10 +45,41 @@ void PrintBoard(const int *board){
     printf("%4d", board[index]);
     };
     printf("\n");
+
+
 }
-int main(){
+
+void RunGame(){
+
+int GameOver = 0;
+int Side = NOUGHTS;
+int LastMoveMade = 0;
 int board[25];
+
 InitializeBoard(&board[0]);
 PrintBoard(&board[0]);
+
+while(!GameOver){
+    if(Side==NOUGHTS){
+
+
+    } else {
+
+        PrintBoard(&board[0]);
+    }
+
+
+
+
+}
+
+
+
+}
+int main(){
+srand(time(NULL));
+RunGame();
+
 return 0;
+
 }
