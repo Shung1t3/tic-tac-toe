@@ -14,10 +14,6 @@ int board[25] = {
 */
 enum {NOUGHTS , CROSSES , BORDER , EMPTY };
 enum { HUMANWIN, COMPWIN, DRAW };
-const int NOUGHTS = 1;
-const int CROSSES = 2;
-const int BORDER = 3;
-const int EMPTY = 0;
 
 const int ConvertTo25[9] = {
         6,7,8,
@@ -36,13 +32,14 @@ void InitializeBoard(int *board){
 }
 void PrintBoard(const int *board){
     int index = 0;
-    printf("\n Board: \n");
-    for (index = 0; index < 25; index++){
+    char pceChars[] = "OX|-";
+    printf("\n\n Board: \n\n");
+    for (index = 0; index < 9; index++){
         
-    if(index != 0 && index%5==0 ){
-        printf("\n");
+    if(index != 0 && index%3==0 ){
+        printf("\n\n");
     }
-    printf("%4d", board[index]);
+    printf("%4c", pceChars[board[ConvertTo25[index]]]);
     };
     printf("\n");
 
