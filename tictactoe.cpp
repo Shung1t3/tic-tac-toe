@@ -46,6 +46,20 @@ void PrintBoard(const int *board){
 
 }
 
+int HasEmpty(const int *board ){
+    int index = 0;
+    int empty = 0;
+    for (index = 0; index < 9; index++){
+        if(board[ConvertTo25[index]] == EMPTY) return 1;
+    };
+    return 0;
+}
+
+void MakeMove(int *board, int const sq, int const Side) {
+    board[sq] = Side;
+};
+
+
 void RunGame(){
 
 int GameOver = 0;
@@ -55,6 +69,9 @@ int board[25];
 
 InitializeBoard(&board[0]);
 PrintBoard(&board[0]);
+
+
+
 
 while(!GameOver){
     if(Side==NOUGHTS){
