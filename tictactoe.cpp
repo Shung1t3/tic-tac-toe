@@ -59,6 +59,47 @@ void MakeMove(int *board, int const sq, int const Side) {
     board[sq] = Side;
 };
 
+int GetHumanMove(const int *board){
+char userInput[64];
+	
+	int moveOk = 0;
+	int move = -1;
+	
+	while (moveOk == 0) {
+	
+		printf("Please enter a move from 1 to 9:");	
+		if(!fgets(userInput, 64, stdin)) continue;
+		
+		if(strlen(userInput) != 2) {
+			printf("Invalid strlen()\n");
+			continue;			
+		}
+		
+		if( sscanf(userInput, "%d", &move) != 1) {
+			move = -1;
+			printf("Invalid sscanf()\n");
+			continue;
+		}
+		
+		if( move < 1 || move > 9) {
+			move = -1;
+			printf("Invalid range\n");
+			continue;
+		}
+		
+		move--; // Zero indexing
+		
+		if( board[ConvertTo25[move]]!=EMPTY) {
+			move=-1;
+			printf("Square not available\n");
+			continue;
+		}
+		moveOk = 1;
+	}
+	printf("Making Move...%d\n",(move+1));
+	return ConvertTo25[move];
+
+}
 
 void RunGame(){
 
@@ -75,7 +116,7 @@ PrintBoard(&board[0]);
 
 while(!GameOver){
     if(Side==NOUGHTS){
-
+        GetHumanMove(&board[0]);
 
     } else {
 
@@ -84,7 +125,7 @@ while(!GameOver){
 
 
 
-
+    GameOver = 1;
 }
 
 
